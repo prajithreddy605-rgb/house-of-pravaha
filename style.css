@@ -1,0 +1,776 @@
+/* =========================================
+   HOUSE OF PRAVAHA
+   Main Website Styles
+   ========================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
+
+:root {
+  --cream: #f8f3ea;
+  --cream-dark: #eee5d5;
+  --green: #173f35;
+  --green-light: #28594d;
+  --gold: #b58b45;
+  --gold-light: #d2b273;
+  --text: #2d2a26;
+  --white: #ffffff;
+  --border: rgba(23, 63, 53, 0.15);
+  --shadow: 0 12px 35px rgba(23, 63, 53, 0.10);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  line-height: 1.7;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+}
+
+/* =========================================
+   ANNOUNCEMENT BAR
+   ========================================= */
+
+.announcement {
+  background: var(--green);
+  color: var(--white);
+  text-align: center;
+  padding: 9px 15px;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+}
+
+/* =========================================
+   NAVIGATION
+   ========================================= */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(248, 243, 234, 0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 6%;
+}
+
+.logo {
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--green);
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.logo span {
+  display: block;
+  color: var(--gold);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: -5px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--green);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--gold);
+}
+
+.nav-whatsapp {
+  background: var(--green);
+  color: var(--white) !important;
+  padding: 11px 18px;
+  border-radius: 3px;
+}
+
+.nav-whatsapp:hover {
+  background: var(--gold);
+}
+
+/* =========================================
+   HERO
+   ========================================= */
+
+.hero {
+  min-height: 78vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 50px;
+  padding: 70px 7%;
+  background:
+    radial-gradient(circle at top right, rgba(181, 139, 69, 0.12), transparent 35%),
+    var(--cream);
+}
+
+.hero-content {
+  max-width: 600px;
+}
+
+.hero-eyebrow {
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+.hero h1 {
+  color: var(--green);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(52px, 6vw, 86px);
+  font-weight: 500;
+  line-height: 0.95;
+  margin-bottom: 25px;
+}
+
+.hero h1 em {
+  color: var(--gold);
+  font-style: italic;
+}
+
+.hero-description {
+  max-width: 480px;
+  color: #665f56;
+  font-size: 15px;
+  margin-bottom: 32px;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 14px 24px;
+  border: 1px solid var(--green);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background: var(--green);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+}
+
+.btn-outline {
+  color: var(--green);
+}
+
+.btn-outline:hover {
+  background: var(--green);
+  color: var(--white);
+}
+
+.hero-image {
+  position: relative;
+  min-height: 560px;
+  background:
+    linear-gradient(rgba(23, 63, 53, 0.08), rgba(23, 63, 53, 0.08)),
+    url('https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85')
+    center / cover;
+  box-shadow: var(--shadow);
+}
+
+.hero-image::after {
+  content: '';
+  position: absolute;
+  inset: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  pointer-events: none;
+}
+
+/* =========================================
+   GENERAL SECTIONS
+   ========================================= */
+
+.section {
+  padding: 90px 7%;
+}
+
+.section-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 50px;
+}
+
+.section-eyebrow {
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 11px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.section-title {
+  color: var(--green);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(40px, 5vw, 62px);
+  font-weight: 500;
+  line-height: 1;
+}
+
+.section-description {
+  color: #71695f;
+  font-size: 14px;
+  margin-top: 16px;
+}
+
+/* =========================================
+   COLLECTIONS
+   ========================================= */
+
+.collections {
+  background: var(--white);
+}
+
+.collection-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.collection-card {
+  position: relative;
+  min-height: 380px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  background-size: cover;
+  background-position: center;
+  box-shadow: var(--shadow);
+}
+
+.collection-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.65),
+    rgba(0, 0, 0, 0.05) 65%
+  );
+}
+
+.collection-card:nth-child(1) {
+  background-image: url('https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=900&q=85');
+}
+
+.collection-card:nth-child(2) {
+  background-image: url('https://images.unsplash.com/photo-1583391733956-6c78276477e2?auto=format&fit=crop&w=900&q=85');
+}
+
+.collection-card:nth-child(3) {
+  background-image: url('https://images.unsplash.com/photo-1610189022879-7b4a8d3b4a5a?auto=format&fit=crop&w=900&q=85');
+}
+
+.collection-content {
+  position: relative;
+  z-index: 1;
+  color: var(--white);
+  padding: 28px;
+}
+
+.collection-content h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.collection-content p {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* =========================================
+   PRODUCTS
+   ========================================= */
+
+.products {
+  background: var(--cream);
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.product-card {
+  background: var(--white);
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(23, 63, 53, 0.07);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow);
+}
+
+.product-image {
+  height: 390px;
+  background-size: cover;
+  background-position: center;
+}
+
+.product-card:nth-child(1) .product-image {
+  background-image: url('https://images.unsplash.com/photo-1583391733981-8498404b0f89?auto=format&fit=crop&w=800&q=85');
+}
+
+.product-card:nth-child(2) .product-image {
+  background-image: url('https://images.unsplash.com/photo-1609357605129-26f69add5d6e?auto=format&fit=crop&w=800&q=85');
+}
+
+.product-card:nth-child(3) .product-image {
+  background-image: url('https://images.unsplash.com/photo-1610189022879-7b4a8d3b4a5a?auto=format&fit=crop&w=800&q=85');
+}
+
+.product-card:nth-child(4) .product-image {
+  background-image: url('https://images.unsplash.com/photo-1610030469668-8e9f7d0b1f1e?auto=format&fit=crop&w=800&q=85');
+}
+
+.product-card:nth-child(5) .product-image {
+  background-image: url('https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=800&q=85');
+}
+
+.product-card:nth-child(6) .product-image {
+  background-image: url('https://images.unsplash.com/photo-1583391733956-6c78276477e2?auto=format&fit=crop&w=800&q=85');
+}
+
+.product-info {
+  padding: 22px;
+}
+
+.product-category {
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 9px;
+  font-weight: 600;
+}
+
+.product-info h3 {
+  color: var(--green);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 25px;
+  font-weight: 600;
+  margin: 5px 0;
+}
+
+.product-price {
+  color: #615b53;
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+
+.product-link {
+  display: inline-block;
+  color: var(--green);
+  border-bottom: 1px solid var(--gold);
+  padding-bottom: 2px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* =========================================
+   ABOUT
+   ========================================= */
+
+.about {
+  background: var(--green);
+  color: var(--white);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 70px;
+  align-items: center;
+}
+
+.about-image {
+  min-height: 500px;
+  background:
+    url('https://images.unsplash.com/photo-1605763240000-7e93b172d754?auto=format&fit=crop&w=1000&q=85')
+    center / cover;
+}
+
+.about .section-eyebrow {
+  color: var(--gold-light);
+}
+
+.about .section-title {
+  color: var(--white);
+  text-align: left;
+}
+
+.about-text {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 15px;
+  margin-top: 22px;
+  max-width: 600px;
+}
+
+.about-signature {
+  color: var(--gold-light);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 30px;
+  font-style: italic;
+  margin-top: 25px;
+}
+
+/* =========================================
+   WHY US
+   ========================================= */
+
+.why-us {
+  background: var(--white);
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+}
+
+.feature {
+  text-align: center;
+  padding: 30px 18px;
+  border: 1px solid var(--border);
+}
+
+.feature-icon {
+  font-size: 28px;
+  color: var(--gold);
+  margin-bottom: 15px;
+}
+
+.feature h3 {
+  color: var(--green);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.feature p {
+  color: #70695f;
+  font-size: 12px;
+}
+
+/* =========================================
+   WHATSAPP CTA
+   ========================================= */
+
+.whatsapp-section {
+  padding: 75px 7%;
+  background:
+    linear-gradient(rgba(23, 63, 53, 0.94), rgba(23, 63, 53, 0.94)),
+    url('https://images.unsplash.com/photo-1583391733981-8498404b0f89?auto=format&fit=crop&w=1400&q=80')
+    center / cover;
+  text-align: center;
+  color: var(--white);
+}
+
+.whatsapp-section h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(38px, 5vw, 58px);
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.whatsapp-section p {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 14px;
+  margin-bottom: 25px;
+}
+
+.whatsapp-button {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--white);
+  padding: 15px 28px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: background 0.3s ease;
+}
+
+.whatsapp-button:hover {
+  background: var(--gold-light);
+}
+
+/* =========================================
+   FOOTER
+   ========================================= */
+
+.footer {
+  background: #102f28;
+  color: var(--white);
+  padding: 60px 7% 25px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 50px;
+  padding-bottom: 40px;
+}
+
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 35px;
+  color: var(--white);
+  margin-bottom: 10px;
+}
+
+.footer p {
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 12px;
+  max-width: 350px;
+}
+
+.footer h4 {
+  color: var(--gold-light);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 10px;
+  margin-bottom: 18px;
+}
+
+.footer-links {
+  list-style: none;
+}
+
+.footer-links li {
+  margin-bottom: 8px;
+}
+
+.footer-links a {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 12px;
+}
+
+.footer-links a:hover {
+  color: var(--gold-light);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding-top: 22px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 10px;
+}
+
+/* =========================================
+   FLOATING WHATSAPP
+   ========================================= */
+
+.floating-whatsapp {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 9999;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: #25D366;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.22);
+  transition: transform 0.3s ease;
+}
+
+.floating-whatsapp:hover {
+  transform: scale(1.08);
+}
+
+/* =========================================
+   MOBILE MENU
+   ========================================= */
+
+.menu-toggle {
+  display: none;
+  border: 0;
+  background: transparent;
+  color: var(--green);
+  font-size: 25px;
+  cursor: pointer;
+}
+
+/* =========================================
+   RESPONSIVE DESIGN
+   ========================================= */
+
+@media (max-width: 900px) {
+
+  .navbar {
+    padding: 15px 5%;
+  }
+
+  .nav-links {
+    gap: 15px;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 55px 6%;
+  }
+
+  .hero-image {
+    min-height: 500px;
+  }
+
+  .collection-grid,
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-image {
+    min-height: 400px;
+  }
+
+  .features {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 650px) {
+
+  .announcement {
+    font-size: 10px;
+    letter-spacing: 1px;
+  }
+
+  .navbar {
+    padding: 14px 5%;
+  }
+
+  .logo {
+    font-size: 25px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .hero {
+    padding: 45px 6%;
+  }
+
+  .hero h1 {
+    font-size: 55px;
+  }
+
+  .hero-image {
+    min-height: 420px;
+  }
+
+  .section {
+    padding: 65px 6%;
+  }
+
+  .collection-grid,
+  .product-grid,
+  .features,
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .collection-card {
+    min-height: 360px;
+  }
+
+  .product-image {
+    height: 430px;
+  }
+
+  .about-image {
+    min-height: 360px;
+  }
+
+  .footer-grid {
+    gap: 35px;
+  }
+
+  .floating-whatsapp {
+    width: 52px;
+    height: 52px;
+    right: 16px;
+    bottom: 16px;
+  }
+}
