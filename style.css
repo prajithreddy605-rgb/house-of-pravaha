@@ -1,152 +1,223 @@
 
 /* ==========================================
-   HOUSE OF PRAVAHA
-   Kalamkari Handblock Silk Saree Collection
+   HOUSE OF PRAVAHA - CLEAN COLLECTION DESIGN
    ========================================== */
 
-const WHATSAPP_NUMBER = "919666611678";
+:root {
+  --hp-cream: #faf7f0;
+  --hp-white: #ffffff;
+  --hp-green: #315545;
+  --hp-gold: #b39560;
+  --hp-text: #292923;
+  --hp-muted: #706f68;
+  --hp-border: #e7dfd0;
+}
 
-const sarees = [
-  {
-    id: "kalamkari-peach",
-    name: "Kalamkari Handblock Silk Saree",
-    colour: "Peach & Rust",
-    image: "images/kalamkari-peach.jpg",
-    price: 1650
-  },
-  {
-    id: "kalamkari-cream-blue",
-    name: "Kalamkari Handblock Silk Saree",
-    colour: "Cream & Blue",
-    image: "images/kalamkari-cream-blue.jpg",
-    price: 1650
-  },
-  {
-    id: "kalamkari-yellow",
-    name: "Kalamkari Handblock Silk Saree",
-    colour: "Yellow Multicolour",
-    image: "images/kalamkari-yellow.jpg",
-    price: 1650
-  },
-  {
-    id: "kalamkari-navy",
-    name: "Kalamkari Handblock Silk Saree",
-    colour: "Navy Blue & Cream",
-    image: "images/kalamkari-navy.jpg",
-    price: 1650
+body {
+  background: var(--hp-cream);
+  color: var(--hp-text);
+}
+
+/* Clean, photo-free homepage introduction */
+.clean-hero {
+  background: var(--hp-cream);
+  text-align: center;
+  padding: 90px 20px 80px;
+}
+
+.clean-hero h1 {
+  color: var(--hp-green);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(38px, 6vw, 68px);
+  font-weight: 400;
+  line-height: 1.15;
+  margin: 12px auto 20px;
+}
+
+.clean-hero p {
+  color: var(--hp-muted);
+  font-size: 16px;
+  line-height: 1.8;
+  max-width: 570px;
+  margin: 0 auto 28px;
+}
+
+.eyebrow {
+  color: var(--hp-gold);
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.clean-hero .hero-button {
+  display: inline-block;
+  background: var(--hp-green);
+  color: var(--hp-white);
+  text-decoration: none;
+  padding: 14px 26px;
+  border-radius: 3px;
+  transition: background 0.2s ease;
+}
+
+.clean-hero .hero-button:hover {
+  background: #243f33;
+}
+
+/* Collection section */
+.collection-section {
+  padding: 65px 6%;
+  background: var(--hp-white);
+}
+
+.section-heading {
+  max-width: 720px;
+  margin: 0 auto 38px;
+  text-align: center;
+}
+
+.section-heading h2 {
+  color: var(--hp-green);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 400;
+  margin: 12px 0;
+}
+
+.section-heading > p:not(.eyebrow) {
+  color: var(--hp-muted);
+  line-height: 1.7;
+}
+
+/* Four product cards */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.product-card {
+  min-width: 0;
+  background: var(--hp-white);
+  border: 1px solid var(--hp-border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.product-image-wrap {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  background: var(--hp-cream);
+  overflow: hidden;
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.03);
+}
+
+.image-placeholder {
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  color: var(--hp-muted);
+  font-size: 14px;
+}
+
+.product-info {
+  padding: 18px 16px 20px;
+}
+
+.product-colour {
+  color: var(--hp-gold);
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin: 0 0 8px;
+}
+
+.product-info h3 {
+  color: var(--hp-text);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 1.4;
+  margin: 0 0 12px;
+}
+
+.product-price {
+  color: var(--hp-green);
+  font-size: 21px;
+  font-weight: 600;
+  margin: 0 0 5px;
+}
+
+.shipping-note {
+  color: var(--hp-muted);
+  font-size: 12px;
+  margin: 0 0 16px;
+}
+
+.whatsapp-order {
+  display: block;
+  width: 100%;
+  background: var(--hp-green);
+  color: var(--hp-white);
+  border: none;
+  border-radius: 3px;
+  padding: 13px 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.whatsapp-order:hover {
+  background: #243f33;
+}
+
+/* Responsive layout for phones and tablets */
+@media (max-width: 1000px) {
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
   }
-];
-
-/* Format prices in Indian rupees */
-function formatPrice(amount) {
-  return new Intl.NumberFormat("en-IN", {
-    style: "currency",
-    currency: "INR",
-    maximumFractionDigits: 0
-  }).format(amount);
 }
 
-/* Create the saree cards on the website */
-function displaySarees() {
-  const productGrid = document.getElementById("product-grid");
-
-  if (!productGrid) {
-    console.warn(
-      'Product area not found. Add id="product-grid" to index.html.'
-    );
-    return;
+@media (max-width: 520px) {
+  .clean-hero {
+    padding: 65px 20px;
   }
 
-  productGrid.innerHTML = sarees.map((saree) => `
-    <article class="product-card">
-      <div class="product-image-wrap">
-        <img
-          class="product-image"
-          src="${saree.image}"
-          alt="${saree.name} in ${saree.colour}"
-          loading="lazy"
-          onerror="this.style.display='none';
-            this.nextElementSibling.style.display='flex';"
-        />
-        <div class="image-placeholder" style="display:none;">
-          Image unavailable
-        </div>
-      </div>
+  .collection-section {
+    padding: 45px 16px;
+  }
 
-      <div class="product-info">
-        <p class="product-colour">${saree.colour}</p>
-        <h3>${saree.name}</h3>
-        <p class="product-price">${formatPrice(saree.price)}</p>
-        <p class="shipping-note">
-          Shipping charges extra
-        </p>
+  .product-grid {
+    gap: 12px;
+  }
 
-        <button
-          class="whatsapp-order"
-          type="button"
-          data-product="${saree.name} - ${saree.colour}"
-          data-price="${saree.price}"
-        >
-          Order on WhatsApp
-        </button>
-      </div>
-    </article>
-  `).join("");
+  .product-info {
+    padding: 13px 10px 15px;
+  }
+
+  .product-info h3 {
+    font-size: 16px;
+  }
+
+  .product-price {
+    font-size: 18px;
+  }
+
+  .whatsapp-order {
+    font-size: 12px;
+    padding: 12px 6px;
+  }
 }
-
-/* Open WhatsApp with the selected saree details */
-function setupWhatsAppOrders() {
-  document.addEventListener("click", function (event) {
-    const button = event.target.closest(".whatsapp-order");
-
-    if (!button) return;
-
-    const productName =
-      button.getAttribute("data-product") || "Kalamkari saree";
-
-    const price =
-      Number(button.getAttribute("data-price")) || 1650;
-
-    const message = [
-      "Hello House of Pravaha!",
-      "",
-      "I am interested in this saree:",
-      productName,
-      `Price: ${formatPrice(price)}`,
-      "Please share the shipping charges and delivery details.",
-      "Please confirm availability before I place the order."
-    ].join("\n");
-
-    const whatsappURL =
-      `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-
-    window.open(whatsappURL, "_blank", "noopener,noreferrer");
-  });
-}
-
-/* Mobile navigation menu */
-function setupMobileMenu() {
-  const menuToggle = document.querySelector(".menu-toggle");
-  const navLinks = document.querySelector(".nav-links");
-
-  if (!menuToggle || !navLinks) return;
-
-  menuToggle.addEventListener("click", function () {
-    const isOpen = navLinks.classList.toggle("mobile-open");
-    menuToggle.setAttribute("aria-expanded", String(isOpen));
-  });
-
-  navLinks.querySelectorAll("a").forEach(function (link) {
-    link.addEventListener("click", function () {
-      navLinks.classList.remove("mobile-open");
-      menuToggle.setAttribute("aria-expanded", "false");
-    });
-  });
-}
-
-/* Run everything after the page has loaded */
-document.addEventListener("DOMContentLoaded", function () {
-  displaySarees();
-  setupWhatsAppOrders();
-  setupMobileMenu();
-});
