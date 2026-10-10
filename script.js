@@ -1,64 +1,152 @@
-// =========================================
-// HOUSE OF PRAVAHA
-// Website interactions
-// =========================================
 
-document.addEventListener("DOMContentLoaded", function () {
+/* ==========================================
+   HOUSE OF PRAVAHA
+   Kalamkari Handblock Silk Saree Collection
+   ========================================== */
 
-  // Smooth scrolling for navigation links
-  const links = document.querySelectorAll('a[href^="#"]');
+const WHATSAPP_NUMBER = "919666611678";
 
-  links.forEach(function (link) {
-    link.addEventListener("click", function (event) {
-      const targetId = this.getAttribute("href");
+const sarees = [
+  {
+    id: "kalamkari-peach",
+    name: "Kalamkari Handblock Silk Saree",
+    colour: "Peach & Rust",
+    image: "images/kalamkari-peach.jpg",
+    price: 1650
+  },
+  {
+    id: "kalamkari-cream-blue",
+    name: "Kalamkari Handblock Silk Saree",
+    colour: "Cream & Blue",
+    image: "images/kalamkari-cream-blue.jpg",
+    price: 1650
+  },
+  {
+    id: "kalamkari-yellow",
+    name: "Kalamkari Handblock Silk Saree",
+    colour: "Yellow Multicolour",
+    image: "images/kalamkari-yellow.jpg",
+    price: 1650
+  },
+  {
+    id: "kalamkari-navy",
+    name: "Kalamkari Handblock Silk Saree",
+    colour: "Navy Blue & Cream",
+    image: "images/kalamkari-navy.jpg",
+    price: 1650
+  }
+];
 
-      if (targetId === "#") {
-        return;
-      }
+/* Format prices in Indian rupees */
+function formatPrice(amount) {
+  return new Intl.NumberFormat("en-IN", {
+    style: "currency",
+    currency: "INR",
+    maximumFractionDigits: 0
+  }).format(amount);
+}
 
-      const target = document.querySelector(targetId);
+/* Create the saree cards on the website */
+function displaySarees() {
+  const productGrid = document.getElementById("product-grid");
 
-      if (target) {
-        event.preventDefault();
+  if (!productGrid) {
+    console.warn(
+      'Product area not found. Add id="product-grid" to index.html.'
+    );
+    return;
+  }
 
-        target.scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-        });
-      }
-    });
+  productGrid.innerHTML = sarees.map((saree) => `
+    <article class="product-card">
+      <div class="product-image-wrap">
+        <img
+          class="product-image"
+          src="${saree.image}"
+          alt="${saree.name} in ${saree.colour}"
+          loading="lazy"
+          onerror="this.style.display='none';
+            this.nextElementSibling.style.display='flex';"
+        />
+        <div class="image-placeholder" style="display:none;">
+          Image unavailable
+        </div>
+      </div>
+
+      <div class="product-info">
+        <p class="product-colour">${saree.colour}</p>
+        <h3>${saree.name}</h3>
+        <p class="product-price">${formatPrice(saree.price)}</p>
+        <p class="shipping-note">
+          Shipping charges extra
+        </p>
+
+        <button
+          class="whatsapp-order"
+          type="button"
+          data-product="${saree.name} - ${saree.colour}"
+          data-price="${saree.price}"
+        >
+          Order on WhatsApp
+        </button>
+      </div>
+    </article>
+  `).join("");
+}
+
+/* Open WhatsApp with the selected saree details */
+function setupWhatsAppOrders() {
+  document.addEventListener("click", function (event) {
+    const button = event.target.closest(".whatsapp-order");
+
+    if (!button) return;
+
+    const productName =
+      button.getAttribute("data-product") || "Kalamkari saree";
+
+    const price =
+      Number(button.getAttribute("data-price")) || 1650;
+
+    const message = [
+      "Hello House of Pravaha!",
+      "",
+      "I am interested in this saree:",
+      productName,
+      `Price: ${formatPrice(price)}`,
+      "Please share the shipping charges and delivery details.",
+      "Please confirm availability before I place the order."
+    ].join("\n");
+
+    const whatsappURL =
+      `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+
+    window.open(whatsappURL, "_blank", "noopener,noreferrer");
   });
+}
 
-  // WhatsApp order buttons
-  const whatsappButtons = document.querySelectorAll(".whatsapp-order");
-
-  whatsappButtons.forEach(function (button) {
-    button.addEventListener("click", function () {
-
-      const productName =
-        this.getAttribute("data-product") || "a saree";
-
-      const message =
-        "Hello House of Pravaha! I am interested in " +
-        productName +
-        ". Please share more details.";
-
-      const whatsappURL =
-        "https://wa.me/919666611678?text=" +
-        encodeURIComponent(message);
-
-      window.open(whatsappURL, "_blank");
-    });
-  });
-
-  // Mobile navigation toggle
+/* Mobile navigation menu */
+function setupMobileMenu() {
   const menuToggle = document.querySelector(".menu-toggle");
   const navLinks = document.querySelector(".nav-links");
 
-  if (menuToggle && navLinks) {
-    menuToggle.addEventListener("click", function () {
-      navLinks.classList.toggle("mobile-open");
-    });
-  }
+  if (!menuToggle || !navLinks) return;
 
+  menuToggle.addEventListener("click", function () {
+    const isOpen = navLinks.classList.toggle("mobile-open");
+    menuToggle.setAttribute("aria-expanded", String(isOpen));
+  });
+
+  navLinks.querySelectorAll("a").forEach(function (link) {
+    link.addEventListener("click", function () {
+      navLinks.classList.remove("mobile-open");
+      menuToggle.setAttribute("aria-expanded", "false");
+    });
+  });
+}
+
+/* Run everything after the page has loaded */
+document.addEventListener("DOMContentLoaded", function () {
+  displaySarees();
+  setupWhatsAppOrders();
+  setupMobileMenu();
 });
