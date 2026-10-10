@@ -1,296 +1,152 @@
 
-:root {
-  --cream: #f8f6ef;
-  --paper: #fffdf8;
-  --green: #214638;
-  --green-dark: #18372c;
-  --gold: #b49a62;
-  --ink: #292d27;
-  --muted: #77786e;
-  --line: #e5e0d3;
+/* ==========================================
+   HOUSE OF PRAVAHA
+   Kalamkari Handblock Silk Saree Collection
+   ========================================== */
+
+const WHATSAPP_NUMBER = "919666611678";
+
+const sarees = [
+  {
+    id: "kalamkari-peach",
+    name: "Kalamkari Handblock Silk Saree",
+    colour: "Peach & Rust",
+    image: "images/kalamkari-peach.jpg",
+    price: 1650
+  },
+  {
+    id: "kalamkari-cream-blue",
+    name: "Kalamkari Handblock Silk Saree",
+    colour: "Cream & Blue",
+    image: "images/kalamkari-cream-blue.jpg",
+    price: 1650
+  },
+  {
+    id: "kalamkari-yellow",
+    name: "Kalamkari Handblock Silk Saree",
+    colour: "Yellow Multicolour",
+    image: "images/kalamkari-yellow.jpg",
+    price: 1650
+  },
+  {
+    id: "kalamkari-navy",
+    name: "Kalamkari Handblock Silk Saree",
+    colour: "Navy Blue & Cream",
+    image: "images/kalamkari-navy.jpg",
+    price: 1650
+  }
+];
+
+/* Format prices in Indian rupees */
+function formatPrice(amount) {
+  return new Intl.NumberFormat("en-IN", {
+    style: "currency",
+    currency: "INR",
+    maximumFractionDigits: 0
+  }).format(amount);
 }
 
-* {
-  box-sizing: border-box;
-}
+/* Create the saree cards on the website */
+function displaySarees() {
+  const productGrid = document.getElementById("product-grid");
 
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  margin: 0;
-  background: var(--cream);
-  color: var(--ink);
-  font-family: Arial, Helvetica, sans-serif;
-  line-height: 1.65;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.site-header {
-  min-height: 82px;
-  padding: 18px 7%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  border-bottom: 1px solid var(--line);
-  background: var(--paper);
-}
-
-.brand {
-  color: var(--green);
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 20px;
-  letter-spacing: 2px;
-  font-weight: normal;
-}
-
-nav {
-  display: flex;
-  align-items: center;
-  gap: 28px;
-  font-size: 13px;
-}
-
-nav a:hover,
-.text-link:hover {
-  color: var(--gold);
-}
-
-.nav-contact {
-  border: 1px solid var(--green);
-  padding: 8px 16px;
-}
-
-.hero {
-  min-height: 510px;
-  padding: 100px 22px 80px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  background: var(--cream);
-}
-
-.eyebrow {
-  color: #8b764a;
-  font-size: 11px;
-  letter-spacing: 3px;
-  font-weight: bold;
-}
-
-.hero h1 {
-  margin: 18px 0;
-  font-family: Georgia, "Times New Roman", serif;
-  font-weight: normal;
-  font-size: clamp(44px, 7vw, 76px);
-  line-height: 1.12;
-  letter-spacing: -1.5px;
-}
-
-.hero h1 em {
-  color: var(--green);
-  font-weight: normal;
-}
-
-.hero-copy {
-  max-width: 510px;
-  margin: 0 auto 28px;
-  color: var(--muted);
-  font-size: 15px;
-}
-
-.primary-button,
-.order-button {
-  display: inline-block;
-  background: var(--green);
-  color: white;
-  padding: 13px 22px;
-  font-size: 13px;
-  transition: background 0.2s ease;
-}
-
-.primary-button:hover,
-.order-button:hover {
-  background: var(--green-dark);
-}
-
-.hero-note {
-  margin-top: 42px;
-  color: #8b764a;
-  font-size: 10px;
-  letter-spacing: 3px;
-}
-
-.section {
-  padding: 82px 7%;
-}
-
-.collection {
-  background: var(--paper);
-  border-top: 1px solid var(--line);
-}
-
-.section-heading {
-  text-align: center;
-  margin: 0 auto 44px;
-}
-
-.section-heading h2,
-.about h2 {
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(30px, 4vw, 43px);
-  font-weight: normal;
-  line-height: 1.2;
-  margin: 12px 0;
-}
-
-.section-heading > p:last-child {
-  color: var(--muted);
-  font-size: 14px;
-}
-
-.product-grid {
-  max-width: 1120px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 32px;
-}
-
-.product-card {
-  min-width: 0;
-  border: 1px solid var(--line);
-  background: var(--paper);
-}
-
-.product-card img {
-  display: block;
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  background: #eee8db;
-}
-
-.product-info {
-  padding: 22px;
-}
-
-.product-number {
-  color: #8b764a;
-  font-size: 10px;
-  letter-spacing: 2px;
-}
-
-.product-info h3 {
-  margin: 6px 0;
-  font-family: Georgia, "Times New Roman", serif;
-  font-weight: normal;
-  font-size: 25px;
-}
-
-.product-description {
-  color: var(--muted);
-  font-size: 13px;
-}
-
-.price {
-  font-size: 21px;
-  font-weight: bold;
-  color: var(--green);
-}
-
-.price span {
-  font-size: 12px;
-  font-weight: normal;
-  color: var(--muted);
-}
-
-.order-button {
-  width: 100%;
-  text-align: center;
-  margin-top: 4px;
-}
-
-.collection-note {
-  margin-top: 28px;
-  text-align: center;
-  color: var(--muted);
-  font-size: 12px;
-}
-
-.about {
-  max-width: 780px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.about > p:not(.eyebrow) {
-  color: var(--muted);
-  font-size: 15px;
-}
-
-.text-link {
-  display: inline-block;
-  margin-top: 14px;
-  color: var(--green);
-  border-bottom: 1px solid var(--gold);
-  padding-bottom: 4px;
-  font-size: 13px;
-}
-
-footer {
-  padding: 38px 20px;
-  text-align: center;
-  background: #eeeade;
-  color: var(--muted);
-  font-size: 12px;
-}
-
-.footer-brand {
-  display: inline-block;
-  font-size: 16px;
-}
-
-.copyright {
-  margin-top: 24px;
-  font-size: 11px;
-}
-
-@media (max-width: 650px) {
-  .site-header {
-    padding: 18px 5%;
-    flex-direction: column;
-    gap: 15px;
+  if (!productGrid) {
+    console.warn(
+      'Product area not found. Add id="product-grid" to index.html.'
+    );
+    return;
   }
 
-  nav {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 12px 18px;
-  }
+  productGrid.innerHTML = sarees.map((saree) => `
+    <article class="product-card">
+      <div class="product-image-wrap">
+        <img
+          class="product-image"
+          src="${saree.image}"
+          alt="${saree.name} in ${saree.colour}"
+          loading="lazy"
+          onerror="this.style.display='none';
+            this.nextElementSibling.style.display='flex';"
+        />
+        <div class="image-placeholder" style="display:none;">
+          Image unavailable
+        </div>
+      </div>
 
-  .hero {
-    min-height: 440px;
-    padding: 70px 22px;
-  }
+      <div class="product-info">
+        <p class="product-colour">${saree.colour}</p>
+        <h3>${saree.name}</h3>
+        <p class="product-price">${formatPrice(saree.price)}</p>
+        <p class="shipping-note">
+          Shipping charges extra
+        </p>
 
-  .section {
-    padding: 60px 5%;
-  }
-
-  .product-grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-
-  .product-info {
-    padding: 18px;
-  }
+        <button
+          class="whatsapp-order"
+          type="button"
+          data-product="${saree.name} - ${saree.colour}"
+          data-price="${saree.price}"
+        >
+          Order on WhatsApp
+        </button>
+      </div>
+    </article>
+  `).join("");
 }
+
+/* Open WhatsApp with the selected saree details */
+function setupWhatsAppOrders() {
+  document.addEventListener("click", function (event) {
+    const button = event.target.closest(".whatsapp-order");
+
+    if (!button) return;
+
+    const productName =
+      button.getAttribute("data-product") || "Kalamkari saree";
+
+    const price =
+      Number(button.getAttribute("data-price")) || 1650;
+
+    const message = [
+      "Hello House of Pravaha!",
+      "",
+      "I am interested in this saree:",
+      productName,
+      `Price: ${formatPrice(price)}`,
+      "Please share the shipping charges and delivery details.",
+      "Please confirm availability before I place the order."
+    ].join("\n");
+
+    const whatsappURL =
+      `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+
+    window.open(whatsappURL, "_blank", "noopener,noreferrer");
+  });
+}
+
+/* Mobile navigation menu */
+function setupMobileMenu() {
+  const menuToggle = document.querySelector(".menu-toggle");
+  const navLinks = document.querySelector(".nav-links");
+
+  if (!menuToggle || !navLinks) return;
+
+  menuToggle.addEventListener("click", function () {
+    const isOpen = navLinks.classList.toggle("mobile-open");
+    menuToggle.setAttribute("aria-expanded", String(isOpen));
+  });
+
+  navLinks.querySelectorAll("a").forEach(function (link) {
+    link.addEventListener("click", function () {
+      navLinks.classList.remove("mobile-open");
+      menuToggle.setAttribute("aria-expanded", "false");
+    });
+  });
+}
+
+/* Run everything after the page has loaded */
+document.addEventListener("DOMContentLoaded", function () {
+  displaySarees();
+  setupWhatsAppOrders();
+  setupMobileMenu();
+});
